@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed `local-exec` provisioners across 12 modules incorrectly setting `AWS_DEFAULT_REGION` to the AWS account ID instead of the region. The `account` trigger value was used where `region` was intended, causing the AWS CLI to fail with an invalid region when the `AWS_REGION` override was not present. Affected modules: `cloudfront/content`, `cloudfront/s3_origin`, `cloudfront/custom_origin`, `base_infra/log_archive`, `modules/titiler`, `modules/mosaic-titiler`, `modules/cirrus-dashboard`, `modules/ssm_bastion`, `modules/jupyterhub-dask-eks`, and `profiles/analytics`.
 
+- Skip CloudFront log bucket replication configuration when no archive bucket is provided (`deploy_log_archive = false`). Previously, an empty `filmdrop_archive_bucket_name` would produce an invalid `arn:aws:s3:::` ARN and fail during plan.
+
 ### Removed
 
 

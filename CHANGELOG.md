@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Skip CloudFront log bucket replication configuration when no archive bucket is provided (`deploy_log_archive = false`). Previously, an empty `filmdrop_archive_bucket_name` would produce an invalid `arn:aws:s3:::` ARN and fail during plan.
 
+- Expose `titiler_url` and `titiler_vpce_dns_regional` outputs for the `filmdrop-titiler` deployment path so downstream consumers can reference the TiTiler endpoint after apply.
+
 ### Removed
 
 

@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed unconditional creation of `aws_flow_log` resource in `vpc_infra` module. When `deploy_log_archive` is `false` and no archive bucket is configured, the flow log resource was still being created with an empty bucket name, producing an invalid ARN and failing deployment. The resource is now guarded with `count = var.archive_log_bucket_name != "" ? 1 : 0`.
 
+- Fixed `local-exec` provisioners across 12 modules incorrectly setting `AWS_DEFAULT_REGION` to the AWS account ID instead of the region. The `account` trigger value was used where `region` was intended, causing the AWS CLI to fail with an invalid region when the `AWS_REGION` override was not present. Affected modules: `cloudfront/content`, `cloudfront/s3_origin`, `cloudfront/custom_origin`, `base_infra/log_archive`, `modules/titiler`, `modules/mosaic-titiler`, `modules/cirrus-dashboard`, `modules/ssm_bastion`, `modules/jupyterhub-dask-eks`, and `profiles/analytics`.
+
 ### Removed
 
 

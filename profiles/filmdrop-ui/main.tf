@@ -2,7 +2,7 @@ module "filmdrop-ui" {
   # Pinned to a fork branch carrying the optional filmdrop_ui_source_url input
   # (PR Element84/terraform-aws-filmdrop-ui#10). Switch back to the official
   # source and a tagged release once that PR is merged.
-  source = "git::https://github.com/matthewhanson/terraform-aws-filmdrop-ui.git?ref=25c43498354995f5ff91daeaf68e944329a0a3be"
+  source = "git::https://github.com/matthewhanson/terraform-aws-filmdrop-ui.git?ref=74679d736cb16a35ea99672870d346a155e87613"
 
   vpc_id                 = var.vpc_id
   vpc_private_subnet_ids = var.private_subnet_ids

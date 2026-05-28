@@ -326,6 +326,7 @@ variable "filmdrop_titiler_inputs" {
     titiler_host_header                       = string
     mosaic_tile_timeout                       = number
     web_acl_id                                = string
+    lambda_memory                             = optional(number)
     api_provisioned_concurrency               = optional(number)
     is_private_endpoint                       = optional(bool)
     api_method_authorization_type             = optional(string)
@@ -568,6 +569,8 @@ variable "cirrus_inputs" {
     cirrus_cli_iam_role_trust_principal          = optional(list(string))
     workflow_metrics_cloudwatch_enabled          = optional(bool)
     workflow_metrics_timestream_enabled          = optional(bool)
+    payload_root_prefix                          = optional(string, "cirrus")
+    payload_tmp_lifecycle_expiration_days        = optional(number, 10)
   })
   default = {
     data_bucket                               = "cirrus-data-bucket-name"
@@ -629,6 +632,8 @@ variable "cirrus_inputs" {
     cirrus_cli_iam_role_trust_principal          = null
     workflow_metrics_cloudwatch_enabled          = false
     workflow_metrics_timestream_enabled          = true
+    payload_root_prefix                          = "cirrus"
+    payload_tmp_lifecycle_expiration_days        = 10
   }
 }
 
